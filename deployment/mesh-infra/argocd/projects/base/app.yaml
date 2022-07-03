@@ -6,7 +6,7 @@ metadata:
 spec:
   project: mesh-infra
   source:
-    repoURL: https://github.com/c0c0n3/kitt4sme.live
+    repoURL: https://github.com/EmojSRL-Team/kitt4sme.live_emoj
     targetRevision: HEAD
     path: deployment/mesh-infra/app
   destination:
