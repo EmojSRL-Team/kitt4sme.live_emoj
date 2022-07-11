@@ -10,9 +10,9 @@
 # at what the kubeseal Makefile target does. To be replaced with the
 # official Nixpkgs expression when it gets updated to build 0.17.5.
 #
-{ lib, stdenv, go_1_17, fetchFromGitHub }:
+{ lib, buildGoModule, fetchFromGitHub }:
 
-stdenv.mkDerivation rec {
+buildGoModule rec {
   pname = "kubeseal";
   version = "0.17.5";
 
@@ -20,31 +20,21 @@ stdenv.mkDerivation rec {
     owner = "bitnami-labs";
     repo = "sealed-secrets";
     rev = "v${version}";
-    sha256 = "sha256-cqOSMAagefKQiKKtgVbk1UFKYGBXQleJ1pgcJ/VyOnM=";
+    sha256 = "sha256-7u7lsMeeZOUGn8eb8sjV9Td+XNEUPDvbSaITdp1JTf4=";
   };
 
-  GO_LD_FLAGS = "-s -w -X main.VERSION=${version}";
+  vendorSha256 = null;
 
-  buildInputs = [ go_1_17 ];
+  doCheck = false;
 
-  buildPhase = ''
-    mkdir -p $out/mod-cache
-    export GOMODCACHE=$out/mod-cache
+  subPackages = [ "cmd/kubeseal" ];
 
-    mkdir -p $out/build-cache
-    export GOCACHE=$out/build-cache
-
-    go build -o kubeseal -ldflags "$GO_LD_FLAGS" ./cmd/kubeseal
-  '';
-  installPhase = ''
-    mkdir -p $out/bin
-    cp kubeseal $out/bin
-  '';
+  ldflags = [ "-s" "-w" "-X main.VERSION=${version}" ];
 
   meta = with lib; {
     description = "A Kubernetes controller and tool for one-way encrypted Secrets";
     homepage = "https://github.com/bitnami-labs/sealed-secrets";
     license = licenses.asl20;
-    maintainers = with maintainers; [ c0c0n3 ];
+    maintainers = with maintainers; [ groodt ];
   };
 }
