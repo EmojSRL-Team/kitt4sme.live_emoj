@@ -32,8 +32,8 @@ spec:
         app: emoj
     spec:
       containers:
-        - image: "localhost:5000/python-docker"
-          imagePullPolicy: Never
+        - image: "registry.local:5000/python-docker"
+          imagePullPolicy: IfNotPresent
           name: emoj
           ports:
           - containerPort: 5000
