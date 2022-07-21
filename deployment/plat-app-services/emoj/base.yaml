@@ -32,7 +32,7 @@ spec:
         app: emoj
     spec:
       containers:
-        - image: emojimage:latest:local
+        - image: emojimage:latest
           imagePullPolicy: IfNotPresent
           name: emoj
           ports:
