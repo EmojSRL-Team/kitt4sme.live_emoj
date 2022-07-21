@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: emoj_docker
+  name: emoj_docker
+spec:
+  ports:
+  - name: http
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: emoj_docker
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: emoj_docker
+  name: emoj_docker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emoj_docker
+  template:
+    metadata:
+      labels:
+        app: emoj_docker
+    spec:
+      containers:
+        - image: python-docker
+          imagePullPolicy: IfNotPresent
+          name: emoj_docker
+          ports:
+          - containerPort: 5000
+            name: http
+          env:
+          - name: "ORION_BASE_URL"
+            value: "http://orion:1026"
