@@ -32,8 +32,8 @@ spec:
         app: emoj
     spec:
       containers:
-        - image: "python-docker:latest"
-          imagePullPolicy: IfNotPresent
+        - image: localhost:5000/python-docker
+          imagePullPolicy: Never
           name: emoj
           ports:
           - containerPort: 5000
