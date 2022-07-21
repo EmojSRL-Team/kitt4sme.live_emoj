@@ -32,7 +32,7 @@ spec:
         app: emoj
     spec:
       containers:
-        - image: "registry.local:5000/python-docker"
+        - image: emojimage:local
           imagePullPolicy: IfNotPresent
           name: emoj
           ports:
