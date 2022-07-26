@@ -77,9 +77,13 @@ spec:
         host: dazzler.default.svc.cluster.local
         port:
           number: 8000
-  - match:  # NOTE (3)
+  - match:  # NOTE (1)
+    - uri:
+        prefix: /emoj/
     - uri:
         prefix: /emoj
+    rewrite:
+      uri: /
     route:
     - destination:
         host: emoj.default.svc.cluster.local
