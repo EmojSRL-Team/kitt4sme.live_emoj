@@ -48,11 +48,11 @@ spec:
           - name: POSTGRES_USE_SSL
             value: "False"
           - name: POSTGRES_DB_NAME
-            value: "quantumleap"
+            value: "WorkerProfiler"
           - name: POSTGRES_DB_USER
-            value: "quantumleap"
+            value: "postgres"
           - name: POSTGRES_DB_PASS
             valueFrom:
               secretKeyRef:
                 name: postgres-users
-                key: quantumleap.password
+                key: postgres.password
