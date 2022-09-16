@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: emojdbtest
+  name: emojdbtest
+spec:
+  ports:
+  - name: http
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: emojdbtest
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: emojdbtest
+  name: emojdbtest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emojdbtest
+  template:
+    metadata:
+      labels:
+        app: emojdbtest
+    spec:
+      containers:
+        - image: emojdbtestimage:latest
+          imagePullPolicy: IfNotPresent
+          name: emojdbtest
+          ports:
+          - containerPort: 5000
+            name: http
+          env:
+          - name: "ORION_BASE_URL"
+            value: "http://orion:1026"
+          - name: POSTGRES_HOST
+            value: "postgres"
+          - name: POSTGRES_PORT
+            value: "5432"
+          - name: POSTGRES_USE_SSL
+            value: "False"
+          - name: POSTGRES_DB_NAME
+            value: "quantumleap"
+          - name: POSTGRES_DB_USER
+            value: "quantumleap"
+          - name: POSTGRES_DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: postgres-users
+                key: quantumleap.password
