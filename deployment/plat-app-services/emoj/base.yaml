@@ -41,3 +41,14 @@ spec:
           env:
           - name: "ORION_BASE_URL"
             value: "http://orion:1026"
+          - name: POSTGRES_HOST
+            value: "postgres"
+          - name: POSTGRES_PORT
+            value: "5432"
+          - name: POSTGRES_USE_SSL
+            value: "False"
+          - name: POSTGRES_DB_NAME
+            value: "hego_dashboard"
+          - name: POSTGRES_DB_USER
+            value: "emoj"
+          - name: POSTGRES_DB_PASS

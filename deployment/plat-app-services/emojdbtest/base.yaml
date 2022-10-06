@@ -48,7 +48,7 @@ spec:
           - name: POSTGRES_USE_SSL
             value: "False"
           - name: POSTGRES_DB_NAME
-            value: "WorkerProfiler"
+            value: "postgres"
           - name: POSTGRES_DB_USER
             value: "postgres"
           - name: POSTGRES_DB_PASS
@@ -56,3 +56,9 @@ spec:
               secretKeyRef:
                 name: postgres-users
                 key: postgres.password
+      volumes:
+      - name: db-routing
+        configMap:
+          name: db-routing
+      - name: db-init
+        emptyDir: {}
