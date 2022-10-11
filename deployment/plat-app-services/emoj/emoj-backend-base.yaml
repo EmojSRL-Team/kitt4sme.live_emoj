@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: emoj-backend
+  name: emoj-backend-svc
+spec:
+  ports:
+  - name: http
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: emoj-backend
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: emoj-backend
+  name: emoj-backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emoj-backend
+  template:
+    metadata:
+      labels:
+        app: emoj-backend
+    spec:
+      containers:
+        - image: emojimage:latest
+          imagePullPolicy: IfNotPresent
+          name: emoj-backend
+          ports:
+          - containerPort: 5000
+            name: http
+          env:
+          - name: DB_HOST
+            value: emoj-db
+          - name: POSTGRES_USER
+          value: POSTGRES_USER
+          - name: POSTGRES_DB
+            value: hego_dashboard
+        volumes:
+        - name: emoj-backend-pvc
+          persistentVolumeClaim:
+            claimName: emoj-backend-pvc
