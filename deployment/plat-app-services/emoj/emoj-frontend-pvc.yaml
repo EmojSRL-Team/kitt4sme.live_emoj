@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata: 
-  name: emoj-backend-pvc
+  name: emoj-frontend-pvc
 spec:
   accessModes: 
   - ReadWriteOnce
   resources: 
     requests: 
-      storage: 10Gi
+      storage: 1Gi
   storageClassName: ""
-  volumeName: emoj-backend-pv
+  volumeName: emoj-frontend-pv
 

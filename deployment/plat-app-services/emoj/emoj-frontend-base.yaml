@@ -52,4 +52,4 @@ spec:
       volumes:
         - name: emoj-backend-pvc
           persistentVolumeClaim:
-            claimName: emoj-backend-pvc
+            claimName: emoj-frontend-pvc
