@@ -13,7 +13,7 @@ spec:
     namespace: default
     name: emoj-backend-pvc
   hostPath:
-    path: "/media/storage/emoj/backend/data/video"
+    path: "/media/marco/emoj/backend/data/video"
     type: DirectoryOrCreate
 
 

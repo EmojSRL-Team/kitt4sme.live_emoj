@@ -13,7 +13,7 @@ spec:
     namespace: default
     name: emoj-db-pvc
   hostPath:
-    path: "/media/storage/emoj/backend/data"
+    path: "/media/marco/emoj/backend/data"
     type: DirectoryOrCreate
 
 
