@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: emoj-db-pv
+    type: local
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: emoj-db-pvc
+  hostPath:
+    path: "/media/storage/emoj/backend/data"
+    type: DirectoryOrCreate
+
+

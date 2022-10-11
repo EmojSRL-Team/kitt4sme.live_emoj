@@ -79,12 +79,20 @@ spec:
           number: 8000
   - match:  # NOTE (1)
     - uri:
-        prefix: /emoj/
+        prefix: /emoj-backend
     route:
     - destination:
-        host: emoj.default.svc.cluster.local
+        host: emoj-backend.default.svc.cluster.local
         port:
           number: 5000
+  - match:  # NOTE (1)
+    - uri:
+        prefix: /emoj-frontend
+    route:
+    - destination:
+        host: emoj-frontend.default.svc.cluster.local
+        port:
+          number: 4200
 
 # NOTE
 # 1. URL rewriting. We use overlapping prefixes to make sure `/x`, `/x/`
