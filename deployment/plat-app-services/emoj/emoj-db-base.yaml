@@ -41,6 +41,8 @@ spec:
         env:
         - name: POSTGRES_USER
           value: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          value: test123
         - name: POSTGRES_DB
           value: hego_dashboard
         volumeMounts:
