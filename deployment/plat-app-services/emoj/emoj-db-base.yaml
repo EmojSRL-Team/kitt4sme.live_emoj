@@ -48,7 +48,7 @@ spec:
         - name: PGDATA
           value: /var/lib/postgresql/data/pgdata
         volumeMounts:
-        - name: pg-volume
+        - name: emoj-db-pvc
           mountPath: /var/lib/postgresql/data
       volumes:
       - name: emoj-db-pvc
