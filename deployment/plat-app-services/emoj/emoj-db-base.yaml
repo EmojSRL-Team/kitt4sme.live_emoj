@@ -45,8 +45,10 @@ spec:
           value: "test123"
         - name: POSTGRES_DB
           value: "hego_dashboard"
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
         volumeMounts:
-        - name: emoj-db-pvc
+        - name: pg-volume
           mountPath: /var/lib/postgresql/data
       volumes:
       - name: emoj-db-pvc
