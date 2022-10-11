@@ -40,15 +40,15 @@ spec:
             name: http
           env:
           - name: POSTGRES_HOST
-            value: emoj-db
+            value: "emoj-db"
           - name: POSTGRES_PORT
-            value: 5432
+            value: "5432"
           - name: POSTGRES_USER
-            value: POSTGRES_USER
+            value: "POSTGRES_USER"
           - name: POSTGRES_PASSWORD
-            value: test123
+            value: "test123"
           - name: POSTGRES_DB
-            value: hego_dashboard
+            value: "hego_dashboard"
       volumes:
         - name: emoj-backend-pvc
           persistentVolumeClaim:
