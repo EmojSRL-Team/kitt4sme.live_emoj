@@ -9,3 +9,5 @@ resources:
 - emoj-db-pv.yaml
 - emoj-db-pvc.yaml
 - emoj-frontend-base.yaml
+- emoj-frontend-pv.yaml
+- emoj-frontend-pvc.yaml

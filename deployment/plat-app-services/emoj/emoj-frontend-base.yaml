@@ -50,6 +50,6 @@ spec:
           - name: POSTGRES_DB
             value: "hego_dashboard"
       volumes:
-        - name: emoj-backend-pvc
+        - name: emoj-frontend-pvc
           persistentVolumeClaim:
             claimName: emoj-frontend-pvc
