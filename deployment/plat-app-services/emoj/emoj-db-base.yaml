@@ -7,9 +7,9 @@ metadata:
 spec:
   ports:
   # PostgreSQL wire protocol clients.
-  - port: 5432
-    targetPort: 5432
-    name: postgres
+  - port: 3306
+    targetPort: 3306
+    name: mysql
   selector:
     app: emoj-db
 
@@ -36,21 +36,18 @@ spec:
         app: emoj-db
     spec:
       containers:
-      - name: postgres
-        image: postgres:latest
+      - name: mysql
+        image: "mysql:5.6"
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 5432
-          name: postgres
+        - containerPort: 3306
+          name: mysql
         env:
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: postgres-users
-              key: postgres.password
+        - name: "MYSQL_ROOT_PASSWORD"
+          value: "test1234"
         volumeMounts:
         - name: emoj-db-pvc
-          mountPath: /var/lib/postgresql/data
+          mountPath: /var/lib/mysql
       volumes:
       - name: emoj-db-pvc
         persistentVolumeClaim:
