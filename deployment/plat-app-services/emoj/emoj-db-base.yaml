@@ -53,7 +53,6 @@ spec:
         volumeMounts:
         - name: emoj-db-pvc
           mountPath: /var/lib/postgresql/data
-          subPath: pgdata
       volumes:
       - name: emoj-db-pvc
         persistentVolumeClaim:
