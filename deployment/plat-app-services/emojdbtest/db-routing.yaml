@@ -1,4 +1,0 @@
-tenants:
-  emoj:
-    backend: Postgres
-default-backend: Postgres

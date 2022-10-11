@@ -32,5 +32,3 @@ spec:
         - "/quantumleap/version"
         - "/emoj"
         - "/emoj/*"
-        - "/prova"
-        - "/prova/*"

@@ -85,16 +85,6 @@ spec:
         host: emoj.default.svc.cluster.local
         port:
           number: 5000
-  - match:  # NOTE (1)
-    - uri:
-        prefix: /prova/
-    - uri:
-        prefix: /prova
-    route:
-    - destination:
-        host: emojdbtest.default.svc.cluster.local
-        port:
-          number: 5000
 
 # NOTE
 # 1. URL rewriting. We use overlapping prefixes to make sure `/x`, `/x/`
