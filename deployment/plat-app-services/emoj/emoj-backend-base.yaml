@@ -40,13 +40,16 @@ spec:
             name: http
           env:
           - name: POSTGRES_HOST
-            value: "emoj-db"
+            value: "emoj-db-deployment"
           - name: POSTGRES_PORT
             value: "5432"
           - name: POSTGRES_USER
-            value: "POSTGRES_USER"
+            value: "postgres"
           - name: POSTGRES_PASSWORD
-            value: "test123"
+            valueFrom:
+            secretKeyRef:
+              name: postgres-users
+              key: postgres.password
           - name: POSTGRES_DB
             value: "hego_dashboard"
       volumes:
