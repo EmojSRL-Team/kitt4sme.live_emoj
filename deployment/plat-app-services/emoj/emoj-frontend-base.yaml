@@ -47,9 +47,9 @@ spec:
             value: "postgres"
           - name: POSTGRES_PASSWORD
             valueFrom:
-            secretKeyRef:
-              name: postgres-users
-              key: postgres.password
+              secretKeyRef:
+                name: postgres-users
+                key: postgres.password
           - name: POSTGRES_DB
             value: "hego_dashboard"
       volumes:
