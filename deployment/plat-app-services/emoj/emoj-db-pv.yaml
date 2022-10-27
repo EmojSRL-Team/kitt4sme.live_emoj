@@ -12,9 +12,9 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   claimRef:
     namespace: default
-    name: emoj-backend-pvc
+    name: emoj-db-pvc
   hostPath:
-    path: "/media/marco/emoj/backend/data/db"
+    path: "/media/marco/emoj/backend/data"
     type: DirectoryOrCreate
 
 

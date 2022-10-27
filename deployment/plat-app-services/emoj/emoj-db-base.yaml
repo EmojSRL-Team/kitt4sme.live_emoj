@@ -21,6 +21,10 @@ metadata:
   name: emoj-db-deployment
   labels:
     app: emoj-db
+  annotations:
+    # Tell Reloader to bounce the Argo CD server whenever the SSO config
+    # and built-in admin credentials change.
+    secret.reloader.stakater.com/reload: "postgres-users"
 spec:
   replicas: 1
   selector:
@@ -39,15 +43,15 @@ spec:
         - containerPort: 5432
           name: postgres
         env:
-        - name: POSTGRES_USER
-          value: "POSTGRES_USER"
         - name: POSTGRES_PASSWORD
-          value: "test123"
-        - name: POSTGRES_DB
-          value: "hego_dashboard"
+          valueFrom:
+            secretKeyRef:
+              name: postgres-users
+              key: postgres.password
         volumeMounts:
         - name: emoj-db-pvc
-          mountPath: /var/lib/postgresql/data
+          mountPath: /var/lib/postgresql
+          subPath: data
       volumes:
       - name: emoj-db-pvc
         persistentVolumeClaim:
