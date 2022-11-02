@@ -32,7 +32,7 @@ spec:
         app: emoj-backend
     spec:
       containers:
-        - image: emojimage:latest
+        - image: emojbackendimage:latest
           imagePullPolicy: IfNotPresent
           name: emoj-backend
           ports:
@@ -40,7 +40,7 @@ spec:
             name: http
           env:
           - name: POSTGRES_HOST
-            value: "emoj-db"
+            value: "emoj-db-svc"
           - name: POSTGRES_PORT
             value: "5432"
           - name: POSTGRES_USER
