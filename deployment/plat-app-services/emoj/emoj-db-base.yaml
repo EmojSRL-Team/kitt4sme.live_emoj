@@ -3,13 +3,13 @@ kind: Service
 metadata:
   labels:
     app: emoj-db
-  name: emoj-db-svc
+  name: emoj-db
 spec:
   ports:
   # PostgreSQL wire protocol clients.
   - port: 5432
     targetPort: 5432
-    name: postgres
+    name: emoj-db
   selector:
     app: emoj-db
 
@@ -18,9 +18,13 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: emoj-db-deployment
+  name: emoj-db
   labels:
     app: emoj-db
+  annotations:
+    # Tell Reloader to bounce the Argo CD server whenever the SSO config
+    # and built-in admin credentials change.
+    secret.reloader.stakater.com/reload: "postgres-emoj"
 spec:
   replicas: 1
   selector:
@@ -32,23 +36,24 @@ spec:
         app: emoj-db
     spec:
       containers:
-      - name: postgres
-        image: postgres:latest
+      - name: emoj-db
+        image: postgres:lateset
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5432
-          name: postgres
+          name: emoj-db
         env:
-        - name: POSTGRES_USER
-          value: "POSTGRES_USER"
         - name: POSTGRES_PASSWORD
-          value: "test123"
-        - name: POSTGRES_DB
-          value: "hego_dashboard"
+          valueFrom:
+            secretKeyRef:
+              name: postgres-emoj
+              key: postgres.password
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
         volumeMounts:
-        - name: emoj-db-pvc
+        - name: pg-volume
           mountPath: /var/lib/postgresql/data
       volumes:
-      - name: emoj-db-pvc
+      - name: pg-volume
         persistentVolumeClaim:
           claimName: emoj-db-pvc
