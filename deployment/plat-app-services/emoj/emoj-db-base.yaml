@@ -41,7 +41,7 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5432
-          name: emoj-db
+          name: postgres
         env:
         - name: POSTGRES_PASSWORD
           valueFrom:
