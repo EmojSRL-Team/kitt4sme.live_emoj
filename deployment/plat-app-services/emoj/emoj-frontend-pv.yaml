@@ -6,7 +6,7 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: 1Gi
+    storage: 10Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -14,7 +14,7 @@ spec:
     namespace: default
     name: emoj-frontend-pvc
   hostPath:
-    path: "/media/marco/emoj/backend/video"
+    path: "/home/ubuntu/Desktop"
     type: DirectoryOrCreate
 
 

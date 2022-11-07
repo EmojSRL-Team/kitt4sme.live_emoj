@@ -7,6 +7,6 @@ resources:
 #- emoj-backend-pvc.yaml
 - emoj-db-base.yaml
 - emoj-db-pvc.yaml
-#- emoj-frontend-base.yaml
-#- emoj-frontend-pv.yaml
-#- emoj-frontend-pvc.yaml
+- emoj-frontend-base.yaml
+- emoj-frontend-pv.yaml
+- emoj-frontend-pvc.yaml
