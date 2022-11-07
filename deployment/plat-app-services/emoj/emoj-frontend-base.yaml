@@ -32,8 +32,8 @@ spec:
         app: emoj-frontend
     spec:
       initContainers:
-        - name: emoj_db_frontend_init
-          image: emoj_db_init:latest
+        - name: emojdbfrontendinit
+          image: emojdbinit:latest
           imagePullPolicy: IfNotPresent
       containers:
         - image: emojimagefrontend:latest
