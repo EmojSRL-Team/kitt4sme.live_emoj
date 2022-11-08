@@ -91,7 +91,7 @@ spec:
     - uri:
         prefix: /emojfrontend
     rewrite:
-      uri: /emojfrontend/
+      uri: /
     route:
     - destination:
         host: emoj-frontend-svc.default.svc.cluster.local
