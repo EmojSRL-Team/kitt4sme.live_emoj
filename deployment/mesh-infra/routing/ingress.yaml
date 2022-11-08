@@ -88,8 +88,6 @@ spec:
   - match:  # NOTE (1)
     - uri:
         prefix: /emojfrontend
-    rewrite:
-      uri: /
     route:
     - destination:
         host: emoj-frontend-svc.default.svc.cluster.local
