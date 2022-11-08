@@ -88,6 +88,8 @@ spec:
   - match:  # NOTE (1)
     - uri:
         prefix: /emojfrontend
+    - uri:
+        prefix: /emojfrontend/
     rewrite:
       uri: /
     route:
