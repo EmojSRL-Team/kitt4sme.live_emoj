@@ -36,8 +36,6 @@ spec:
           image: emojdbinit:latest
           imagePullPolicy: IfNotPresent
           env:
-          - name: EMOJ_BACKEND
-            value: "emoj-backend-svc"
           - name: POSTGRES_HOST
             value: "emoj-db"
           - name: POSTGRES_PORT
@@ -60,6 +58,8 @@ spec:
           - containerPort: 4200
             name: http
           env:
+          - name: EMOJ_BACKEND
+            value: "emoj-backend-svc"
           - name: POSTGRES_HOST
             value: "emoj-db"
           - name: POSTGRES_PORT
