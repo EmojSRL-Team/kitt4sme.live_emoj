@@ -32,7 +32,7 @@ spec:
         app: emoj-backend
     spec:
       containers:
-        - image: emojbackendimage:latest
+        - image: emojimagebackend:latest
           imagePullPolicy: IfNotPresent
           name: emoj-backend
           ports:
