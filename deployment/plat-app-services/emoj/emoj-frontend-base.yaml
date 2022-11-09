@@ -36,11 +36,18 @@ spec:
           image: emojdbinit:latest
           imagePullPolicy: IfNotPresent
           env:
+          - name: EMOJ_BACKEND
+            value: "emoj-backend-svc"
           - name: POSTGRES_HOST
             value: "emoj-db"
           - name: POSTGRES_PORT
             value: "5432"
           - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-emoj
+                key: postgreshego.password
+          - name: POSTGRES_INITPASSWORD
             valueFrom:
               secretKeyRef:
                 name: postgres-emoj
@@ -57,6 +64,11 @@ spec:
             value: "emoj-db"
           - name: POSTGRES_PORT
             value: "5432"
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-emoj
+                key: postgreshego.password
       volumes:
         - name: emoj-frontend-pvc
           persistentVolumeClaim:

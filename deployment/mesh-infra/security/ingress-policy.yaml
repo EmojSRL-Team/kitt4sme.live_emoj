@@ -30,7 +30,5 @@ spec:
         - "/orion/*"
         - "/orion/version"
         - "/quantumleap/version"
-        - "/emojbackend"
-        - "/emojbackend/*"
         - "/emojfrontend"
         - "/emojfrontend/*"
