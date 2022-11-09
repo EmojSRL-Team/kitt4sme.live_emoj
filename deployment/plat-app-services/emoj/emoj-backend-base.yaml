@@ -43,6 +43,11 @@ spec:
             value: "emoj-db"
           - name: POSTGRES_PORT
             value: "5432"
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-emoj
+                key: postgreshego.password
       volumes:
         - name: emoj-backend-pvc
           persistentVolumeClaim:
