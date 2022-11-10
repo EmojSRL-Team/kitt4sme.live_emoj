@@ -32,3 +32,4 @@ spec:
         - "/quantumleap/version"
         - "/emojfrontend"
         - "/emojfrontend/*"
+        - "/emojbackend/version"
