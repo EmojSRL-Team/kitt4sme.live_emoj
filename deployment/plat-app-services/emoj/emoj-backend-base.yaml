@@ -49,7 +49,7 @@ spec:
                 name: postgres-emoj
                 key: postgreshego.password
           - name: VIDEO_PATH
-            env: "/app/videos"
+            value: "/app/videos"
           volumeMounts:
             - mountPath: /app/videos
               name: emoj-backend-pvc
