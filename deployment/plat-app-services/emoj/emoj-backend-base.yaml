@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: emoj-backend
-  name: emoj-backend-svc
+  name: emoj-backend
 spec:
   ports:
   - name: http
