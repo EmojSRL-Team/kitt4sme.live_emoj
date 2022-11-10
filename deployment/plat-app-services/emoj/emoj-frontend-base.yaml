@@ -59,7 +59,7 @@ spec:
             name: http
           env:
           - name: EMOJ_BACKEND
-            value: "http://127.0.0.1/emojbackend/"
+            value: "http://emoj-backend:5000"
           - name: POSTGRES_HOST
             value: "emoj-db"
           - name: POSTGRES_PORT
