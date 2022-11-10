@@ -98,7 +98,7 @@ spec:
       uri: /
     route:
       - destination:
-          host: emoj-backend-svc.default.svc.cluster.local
+          host: emoj-backend.default.svc.cluster.local
           port:
             number: 5000
 
