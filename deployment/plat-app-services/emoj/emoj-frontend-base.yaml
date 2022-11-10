@@ -69,6 +69,11 @@ spec:
               secretKeyRef:
                 name: postgres-emoj
                 key: postgreshego.password
+          - name: VIDEO_PATH
+            env: "/app/videos"
+          volumeMounts:
+            - mountPath: /app/videos
+              name: emoj-frontend-pvc
       volumes:
         - name: emoj-frontend-pvc
           persistentVolumeClaim:
