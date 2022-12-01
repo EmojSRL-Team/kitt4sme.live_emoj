@@ -4,6 +4,7 @@ metadata:
   labels:
     app: emoj-backend
   name: emoj-backend
+  namespace: emoj
 spec:
   ports:
   - name: http
@@ -21,6 +22,7 @@ metadata:
   labels:
     app: emoj-backend
   name: emoj-backend-deployment
+  namespace: emoj
 spec:
   replicas: 1
   selector:

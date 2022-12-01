@@ -4,6 +4,7 @@ metadata:
   labels:
     app: emoj-db
   name: emoj-db
+  namespace: emoj
 spec:
   ports:
   # PostgreSQL wire protocol clients.
@@ -19,6 +20,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: emoj-db
+  namespace: emoj
   labels:
     app: emoj-db
   annotations:

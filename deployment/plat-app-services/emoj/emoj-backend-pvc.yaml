@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata: 
   name: emoj-backend-pvc
+  namespace: emoj
 spec:
   accessModes: 
   - ReadWriteOnce
