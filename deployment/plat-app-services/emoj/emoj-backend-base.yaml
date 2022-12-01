@@ -63,12 +63,12 @@ spec:
           volumeMounts:
             - mountPath: /app/videos
               name: emoj-backend-pvc
-          imagePullSecrets:
-            - name: 
-              valueFrom:
-              secretKeyRef:
-                name: emoj-secret
-                key: aws.secret
+      imagePullSecrets:
+        - name: 
+          valueFrom:
+            secretKeyRef:
+              name: emoj-secret
+              key: aws.secret
       volumes:
         - name: emoj-backend-pvc
           persistentVolumeClaim:
