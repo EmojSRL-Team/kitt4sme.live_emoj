@@ -49,7 +49,7 @@ spec:
                 - -c
                 - |-
                   echo "get token"
-                  TOKEN=`aws ecr get-login-password --region ${REGION} | cut -d' ' -f6`
+                  TOKEN=`aws ecr get-login-password --region ${AWS_REGION} | cut -d' ' -f6`
                   echo "delete secrete"
                   kubectl delete secret -n default --ignore-not-found ${SECRET_NAME}
                   echo "create token"
@@ -71,7 +71,7 @@ spec:
                     secretKeyRef:
                       name: emoj-secret
                       key: aws.keyid
-                - name: ACCOUNT
+                - name: AWS_ACCOUNT
                   valueFrom:
                     secretKeyRef:
                       name: emoj-secret
@@ -81,14 +81,14 @@ spec:
                     secretKeyRef:
                       name: emoj-secret
                       key: aws.secret
-                - name: REGION
+                - name: AWS_REGION
                   valueFrom:
                     secretKeyRef:
                       name: emoj-secret
                       key: aws.region
                 - name: ECR_REPOSITORY
-                  value: https://768927817436.dkr.ecr.eu-south-1.amazonaws.com
-              image: gtsopour/awscli-kubectl:latest
+                  value: https://${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com
+              image: alpine:latest
               imagePullPolicy: IfNotPresent
               name: ecr-token-helper
           restartPolicy: Never
