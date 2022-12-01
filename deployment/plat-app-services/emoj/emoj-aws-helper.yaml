@@ -88,7 +88,7 @@ spec:
                       key: aws.region
                 - name: ECR_REPOSITORY
                   value: https://${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com
-              image: alpine:latest
+              image: odaniait/aws-kubectl:latest
               imagePullPolicy: IfNotPresent
               name: ecr-token-helper
           restartPolicy: Never
