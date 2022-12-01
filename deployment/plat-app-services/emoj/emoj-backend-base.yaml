@@ -33,10 +33,10 @@ spec:
     spec:
       containers:
         - image: 
-          valueFrom:
-                secretKeyRef:
-                  name: emoj-secret
-                  key: aws.emojhegouri
+            valueFrom:
+                  secretKeyRef:
+                    name: emoj-secret
+                    key: aws.emojhegouri
           imagePullPolicy: IfNotPresent
           name: emoj-backend
           ports:
