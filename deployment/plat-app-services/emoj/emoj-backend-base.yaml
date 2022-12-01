@@ -32,11 +32,7 @@ spec:
         app: emoj-backend
     spec:
       containers:
-        - image: 
-            valueFrom:
-                  secretKeyRef:
-                    name: emoj-secret
-                    key: aws.emojhegouri
+        - image: 768927817436.dkr.ecr.eu-south-1.amazonaws.com/kitt4sme-hego:latest
           imagePullPolicy: IfNotPresent
           name: emoj-backend
           ports:
