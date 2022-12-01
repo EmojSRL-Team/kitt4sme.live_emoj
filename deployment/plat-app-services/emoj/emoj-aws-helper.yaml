@@ -49,13 +49,13 @@ spec:
                 - -c
                 - |-
                   TOKEN=`aws ecr get-login-password --region ${REGION} | cut -d' ' -f6`
-                  kubectl delete secret -n default --ignore-not-found $SECRET_NAME
-                  kubectl create secret -n default docker-registry $SECRET_NAME \
-                  --docker-server=$ECR_REPOSITORY \
+                  kubectl delete secret -n default --ignore-not-found ${SECRET_NAME}
+                  kubectl create secret -n default docker-registry ${SECRET_NAME} \
+                  --docker-server=${ECR_REPOSITORY} \
                   --docker-username=AWS \
-                  --docker-password=$TOKEN \
+                  --docker-password=${TOKEN} \
                   --namespace=default
-                  kubectl patch serviceaccount default -p '{"imagePullSecrets":[{"name":"'$SECRET_NAME'"}]}' -n default
+                  kubectl patch serviceaccount default -p '{"imagePullSecrets":[{"name":"'${SECRET_NAME}'"}]}' -n default
                   echo "token created" 
               env:
                 - name: AWS_SECRET_ACCESS_KEY
