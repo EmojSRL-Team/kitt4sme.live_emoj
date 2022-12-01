@@ -48,8 +48,11 @@ spec:
                 - /bin/sh
                 - -c
                 - |-
+                  echo "get token"
                   TOKEN=`aws ecr get-login-password --region ${REGION} | cut -d' ' -f6`
+                  echo "delete secrete"
                   kubectl delete secret -n default --ignore-not-found ${SECRET_NAME}
+                  echo "create token"
                   kubectl create secret -n default docker-registry ${SECRET_NAME} \
                   --docker-server=${ECR_REPOSITORY} \
                   --docker-username=AWS \
