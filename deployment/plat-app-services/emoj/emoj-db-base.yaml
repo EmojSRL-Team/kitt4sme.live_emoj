@@ -26,7 +26,7 @@ metadata:
   annotations:
     # Tell Reloader to bounce the Argo CD server whenever the SSO config
     # and built-in admin credentials change.
-    secret.reloader.stakater.com/reload: "postgres-emoj"
+    secret.reloader.stakater.com/reload: "emoj-secret"
 spec:
   replicas: 1
   selector:
