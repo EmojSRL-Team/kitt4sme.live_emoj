@@ -4,7 +4,6 @@ metadata:
   labels:
     app: emoj-frontend
   name: emoj-frontend-svc
-  namespace: emoj
 spec:
   ports:
   - name: http
