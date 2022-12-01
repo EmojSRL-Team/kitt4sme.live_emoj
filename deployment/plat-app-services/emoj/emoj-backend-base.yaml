@@ -32,13 +32,23 @@ spec:
         app: emoj-backend
     spec:
       containers:
-        - image: emojimagebackend:latest
+        - image: ${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/kitt4sme-hego:latest
           imagePullPolicy: IfNotPresent
           name: emoj-backend
           ports:
           - containerPort: 5000
             name: http
           env:
+          - name: ACCOUNT
+            valueFrom:
+              secretKeyRef:
+                name: emoj-secret
+                key: aws.account
+          - name: REGION
+            valueFrom:
+              secretKeyRef:
+                name: emoj-secret
+                key: aws.region
           - name: POSTGRES_HOST
             value: "emoj-db"
           - name: POSTGRES_PORT

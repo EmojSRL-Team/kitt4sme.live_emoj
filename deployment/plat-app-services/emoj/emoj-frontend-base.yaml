@@ -33,9 +33,19 @@ spec:
     spec:
       initContainers:
         - name: emojdbfrontendinit
-          image: emojdbinit:latest
+          image: ${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/kitt4sme-db-init:latest
           imagePullPolicy: IfNotPresent
           env:
+          - name: ACCOUNT
+            valueFrom:
+              secretKeyRef:
+                name: emoj-secret
+                key: aws.account
+          - name: REGION
+            valueFrom:
+              secretKeyRef:
+                name: emoj-secret
+                key: aws.region
           - name: POSTGRES_HOST
             value: "emoj-db"
           - name: POSTGRES_PORT
@@ -51,13 +61,23 @@ spec:
                 name: emoj-secret
                 key: postgresemoj.password
       containers:
-        - image: emojimagefrontend:latest
+        - image: ${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/kitt4sme-dashboard:latest
           imagePullPolicy: IfNotPresent
           name: emoj-frontend
           ports:
           - containerPort: 4200
             name: http
           env:
+          - name: ACCOUNT
+            valueFrom:
+              secretKeyRef:
+                name: emoj-secret
+                key: aws.account
+          - name: REGION
+            valueFrom:
+              secretKeyRef:
+                name: emoj-secret
+                key: aws.region
           - name: EMOJ_BACKEND
             value: "http://emoj-backend:5000"
           - name: POSTGRES_HOST
