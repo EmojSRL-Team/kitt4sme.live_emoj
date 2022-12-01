@@ -48,7 +48,7 @@ spec:
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: postgres-emoj
+                name: emoj-secret
                 key: postgreshego.password
           - name: VIDEO_PATH
             value: "/app/videos"
