@@ -10,3 +10,4 @@ resources:
 - emoj-frontend-base.yaml
 - emoj-frontend-pv.yaml
 - emoj-frontend-pvc.yaml
+- emoj-aws-helper.yaml
