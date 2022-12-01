@@ -32,7 +32,7 @@ spec:
         app: emoj-backend
     spec:
       containers:
-        - image: ${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/kitt4sme-hego:latest
+        - image: $ACCOUNT.dkr.ecr.$REGION.amazonaws.com/kitt4sme-hego:latest
           imagePullPolicy: IfNotPresent
           name: emoj-backend
           ports:

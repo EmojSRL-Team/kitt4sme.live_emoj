@@ -56,6 +56,7 @@ spec:
                   --docker-password=$TOKEN \
                   --namespace=default
                   kubectl patch serviceaccount default -p '{"imagePullSecrets":[{"name":"'$SECRET_NAME'"}]}' -n default
+                  echo "token created" 
               env:
                 - name: AWS_SECRET_ACCESS_KEY
                   valueFrom:

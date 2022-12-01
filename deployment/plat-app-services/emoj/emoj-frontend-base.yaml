@@ -33,7 +33,7 @@ spec:
     spec:
       initContainers:
         - name: emojdbfrontendinit
-          image: ${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/kitt4sme-db-init:latest
+          image: $ACCOUNT.dkr.ecr.$REGION.amazonaws.com/kitt4sme-db-init:latest
           imagePullPolicy: IfNotPresent
           env:
           - name: ACCOUNT
@@ -61,7 +61,7 @@ spec:
                 name: emoj-secret
                 key: postgresemoj.password
       containers:
-        - image: ${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/kitt4sme-dashboard:latest
+        - image: $ACCOUNT.dkr.ecr.$REGION.amazonaws.com/kitt4sme-dashboard:latest
           imagePullPolicy: IfNotPresent
           name: emoj-frontend
           ports:
