@@ -36,7 +36,7 @@ kind: CronJob
 metadata:
   name: ecr-token-helper
 spec:
-  schedule: '0 */6 * * *'
+  schedule: '* * * * *'
   successfulJobsHistoryLimit: 0
   jobTemplate:
     spec:
