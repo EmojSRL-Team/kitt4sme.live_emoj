@@ -39,6 +39,7 @@ spec:
   schedule: '0/5 * * * *'
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
+  concurrencyPolicy: Replace
   jobTemplate:
     spec:
       template:
