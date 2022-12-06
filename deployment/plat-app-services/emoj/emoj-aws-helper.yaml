@@ -37,7 +37,8 @@ metadata:
   name: ecr-token-helper
 spec:
   schedule: '0/5 * * * *'
-  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
@@ -54,7 +55,7 @@ spec:
                   kubectl delete secret -n default --ignore-not-found ${SECRET_NAME}
                   echo "create token"
                   kubectl create secret -n default docker-registry ${SECRET_NAME} \
-                  --docker-server=${ECR_REPOSITORY} \
+                  --docker-server=https://${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com \
                   --docker-username=AWS \
                   --docker-password=$TOKEN \
                   --namespace=default
@@ -87,7 +88,7 @@ spec:
                       name: emoj-secret
                       key: aws.region
                 - name: ECR_REPOSITORY
-                  value: https://${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com
+                  value: 
               image: odaniait/aws-kubectl:latest
               imagePullPolicy: IfNotPresent
               name: ecr-token-helper
