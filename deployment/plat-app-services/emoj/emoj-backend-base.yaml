@@ -39,12 +39,12 @@ spec:
           - containerPort: 5000
             name: http
           env:
-          - name: ACCOUNT
+          - name: AWS_ACCOUNT
             valueFrom:
               secretKeyRef:
                 name: emoj-secret
                 key: aws.account
-          - name: REGION
+          - name: AWS_REGION
             valueFrom:
               secretKeyRef:
                 name: emoj-secret
