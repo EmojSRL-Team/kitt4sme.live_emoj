@@ -33,13 +33,19 @@ spec:
     spec:
       initContainers:
         - name: emojdbfrontendinit
-          image: 
-          valueFrom:
-                secretKeyRef:
-                  name: emoj-secret
-                  key: aws.dbinituri
+          image: 768927817436.dkr.ecr.eu-south-1.amazonaws.com/kitt4sme-db-init:latest
           imagePullPolicy: IfNotPresent
           env:
+          - name: AWS_ACCOUNT
+            valueFrom:
+              secretKeyRef:
+                name: emoj-secret
+                key: aws.account
+          - name: AWS_REGION
+            valueFrom:
+              secretKeyRef:
+                name: emoj-secret
+                key: aws.region
           - name: POSTGRES_HOST
             value: "emoj-db"
           - name: POSTGRES_PORT
@@ -55,17 +61,23 @@ spec:
                 name: emoj-secret
                 key: postgresemoj.password
       containers:
-        - image: 
-          valueFrom:
-                secretKeyRef:
-                  name: emoj-secret
-                  key: aws.emojdashboarduri
+        - image: 768927817436.dkr.ecr.eu-south-1.amazonaws.com/kitt4sme-dashboard:latest
           imagePullPolicy: IfNotPresent
           name: emoj-frontend
           ports:
           - containerPort: 4200
             name: http
           env:
+          - name: AWS_ACCOUNT
+            valueFrom:
+              secretKeyRef:
+                name: emoj-secret
+                key: aws.account
+          - name: AWS_REGION
+            valueFrom:
+              secretKeyRef:
+                name: emoj-secret
+                key: aws.region
           - name: EMOJ_BACKEND
             value: "http://emoj-backend:5000"
           - name: POSTGRES_HOST
@@ -82,6 +94,8 @@ spec:
           volumeMounts:
             - mountPath: /app/videos
               name: emoj-frontend-pvc
+      imagePullSecrets:
+        - name: regcred
       volumes:
         - name: emoj-frontend-pvc
           persistentVolumeClaim:
