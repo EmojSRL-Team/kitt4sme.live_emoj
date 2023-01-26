@@ -51,6 +51,10 @@ spec:
                 key: aws.region
           - name: POSTGRES_HOST
             value: "emoj-db"
+          - name: EMOJ_BACKEND
+            value: "http://emoj-backend:5000"
+          - name: "ORION_BASE_URL"
+            value: "http://orion:1026"
           - name: POSTGRES_PORT
             value: "5432"
           - name: POSTGRES_PASSWORD
