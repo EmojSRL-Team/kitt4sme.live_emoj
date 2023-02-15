@@ -62,7 +62,7 @@ spec:
                 key: postgresemoj.password
       containers:
         - image: 768927817436.dkr.ecr.eu-south-1.amazonaws.com/kitt4sme-dashboard:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           name: emoj-frontend
           ports:
           - containerPort: 4200

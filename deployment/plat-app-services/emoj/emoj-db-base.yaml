@@ -38,7 +38,7 @@ spec:
       containers:
       - name: emoj-db
         image: postgres:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5432
           name: postgres
