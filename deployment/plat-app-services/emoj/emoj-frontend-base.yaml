@@ -34,7 +34,7 @@ spec:
       initContainers:
         - name: emojdbfrontendinit
           image: 768927817436.dkr.ecr.eu-south-1.amazonaws.com/kitt4sme-db-init:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
           - name: AWS_ACCOUNT
             valueFrom:

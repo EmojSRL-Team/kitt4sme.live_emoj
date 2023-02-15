@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - image: 768927817436.dkr.ecr.eu-south-1.amazonaws.com/kitt4sme-hego:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           name: emoj-backend
           ports:
           - containerPort: 5000
